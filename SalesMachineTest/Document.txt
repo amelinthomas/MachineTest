@@ -1,0 +1,33 @@
+CREATE TABLE Login(
+l_Id INT IDENTITY(1,1) PRIMARY KEY,
+UserName VARCHAR(20) NOT NULL,
+Password VARCHAR(20) NOT NULL,
+UserType varchar(20) NOT NULL,
+IsActive bit not null);
+
+CREATE TABLE EmployeeRegistration(
+emp_Id INT IDENTITY(1,1) PRIMARY KEY,
+FirstName VARCHAR(20) NOT NULL,
+LastName VARCHAR(20),
+Age Int ,
+Gender VARCHAR(10) ,
+Address VARCHAR(50) ,
+PhoneNumber  NUMERIC,
+l_Id INT ,
+IsActive bit not null
+FOREIGN KEY (l_Id) references Login(l_Id));
+
+CREATE TABLE VisitTbale
+(Visit_id INT IDENTITY(1,1) PRIMARY KEY,
+Cust_Name VARCHAR(100),
+Contact_Person VARCHAR(100),
+Contact_No NUMERIC,
+Interest_Product VARCHAR(100),
+Visit_Subject VARCHAR(100),
+Description VARCHAR(100),
+Visit_datetime DATETIME,
+Is_Disabled BIT,
+Is_Deleted BIT,
+Emp_id INT FOREIGN KEY REFERENCES EmployeeRegistration(Emp_id));
+
+
